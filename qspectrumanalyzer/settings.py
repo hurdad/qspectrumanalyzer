@@ -17,12 +17,12 @@ class QSpectrumAnalyzerSettings(QtWidgets.QDialog, Ui_QSpectrumAnalyzerSettings)
 
         # Load settings
         settings = QtCore.QSettings()
-        self.executableEdit.setText(settings.value("executable", "soapy_power"))
+        self.executableEdit.setText(settings.value("executable", "dgs_radio_server"))
         self.deviceEdit.setText(settings.value("device", ""))
         self.lnbSpinBox.setValue(settings.value("lnb_lo", 0, float) / 1e6)
         self.waterfallHistorySizeSpinBox.setValue(settings.value("waterfall_history_size", 100, int))
 
-        backend = settings.value("backend", "soapy_power")
+        backend = settings.value("backend", "dgs_radio_server")
         try:
             backend_module = getattr(backends, backend)
         except AttributeError:

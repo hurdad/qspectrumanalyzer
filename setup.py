@@ -61,6 +61,7 @@ setup(
         "soapy_power>=1.6.0",
         "pyqtgraph>=0.10.0",
         "Qt.py",
+        "PyQt5"
     ],
     options={
         'build_qt': {
