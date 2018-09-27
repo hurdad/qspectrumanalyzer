@@ -25,7 +25,7 @@ class PowerThread(BasePowerThread):
             settings = QtCore.QSettings()
             cmdline = shlex.split(os.path.join(os.getcwd(), settings.value("executable", "dgs_radio_server")))
             cmdline.extend([
-                "-s", "{}".format("tcp://127.0.0.1:5556")
+                "-s", "{}".format("tcp://127.0.0.1:5557")
             ])
             print('Starting backend:')
             print(' '.join(cmdline))
@@ -34,10 +34,9 @@ class PowerThread(BasePowerThread):
                                          universal_newlines=True, console=False)
 
     def parse_output(self, line):
-
         data = json.loads(line)
         self.databuffer = {"timestamp": data['msec'],
-                           "x": data['fftData'],
-                           "y": data['fftFreqData']}
+                           "y": data['fftData'],
+                           "x": data['fftFreqData']}
 
         self.data_storage.update(self.databuffer)
