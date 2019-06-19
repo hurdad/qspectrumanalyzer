@@ -35,8 +35,9 @@ class PowerThread(BasePowerThread):
 
     def parse_output(self, line):
         data = json.loads(line)
+        fft_freq = np.linspace(data["lowestFrequency"], data["highestFrequency"], data['nFftData'])
         self.databuffer = {"timestamp": data['msec'],
                            "y": data['fftData'],
-                           "x": data['fftFreqData']}
+                           "x": fft_freq}
 
         self.data_storage.update(self.databuffer)
